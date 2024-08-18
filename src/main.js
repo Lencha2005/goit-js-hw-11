@@ -1,12 +1,10 @@
 import {creatGalleryCard} from './js/render-functions';
-import {fetchPhotos, loader} from './js/pixabay-api';
+import {fetchPhotos, loader, galleryList, formSearchEl} from './js/pixabay-api';
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-const formSearchEl = document.querySelector('.js-form-search');
-const galleryList = document.querySelector('.list-gallery');
 
 function onFormSearchSubmit(event){
 event.preventDefault();
@@ -16,8 +14,8 @@ const inputValue = formSearchEl.elements.user_query.value;
 
 fetchPhotos(inputValue)
 .then(data => {
-    galleryList.innerHTML = '';
-        formSearchEl.reset();
+    // galleryList.innerHTML = '';
+    //     formSearchEl.reset();
 
     if (data.hits.length === 0){
         iziToast.error({
