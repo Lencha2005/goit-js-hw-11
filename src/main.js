@@ -9,7 +9,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 function onFormSearchSubmit(event){
 event.preventDefault();
 
-const inputValue = formSearchEl.elements.user_query.value;
+const inputValue = formSearchEl.elements.user_query.value.trim();
 
 
 fetchPhotos(inputValue)
@@ -17,7 +17,7 @@ fetchPhotos(inputValue)
     // galleryList.innerHTML = '';
     //     formSearchEl.reset();
 
-    if (data.hits.length === 0){
+    if (data.hits.length === 0 || inputValue === ''){
         iziToast.error({
             title: 'Error',
             position: 'topRight',
